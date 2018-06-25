@@ -1,0 +1,16 @@
+version: '2'
+services:
+  nginx:
+    container_name: blog-nginx
+    image: nginx:1.15
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./dist:/app/dist
+
+networks:
+  default:
+    external:
+      name: vueblog_bridge
